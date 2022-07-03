@@ -55,10 +55,17 @@ footer .copyright:before {
     height: 42px;
     margin-right: 20px;
 }
-.rss__link {
-
-}
 .rss__img {
     width: auto;
     height: 42px;
 }
+@media (max-width: 768px) {
+    .flex {
+        flex-direction: column;
+        align-items: center;
+    }
+    .col {
+        margin-top: 10px;
+    }
+}
+ 
