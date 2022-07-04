@@ -22,5 +22,5 @@
         "@typescript-eslint/no-explicit-any": 2
     },
     "parser": "@typescript-eslint/parser",
-    "ignorePatterns": ["tsconfig.json", "webpack.config.js"]
+    "ignorePatterns": ["tsconfig.json", "webpack.config.js", "webpack.dev.config.js"] 
 }
