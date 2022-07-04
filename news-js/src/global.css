@@ -22,9 +22,12 @@ main {
 
 footer {
     height: 100px;
-    margin: 0 auto;
+    margin: 20px auto 0;
     width: 80%;
     max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 footer .copyright {
     font-size: 14px;
