@@ -9,13 +9,13 @@ class Loader {
         this.options = options;
     }
 
-    protected getResp<T>(
+    protected async getResp<T>(
         { endpoint, options = {} }: Request,
         callback: callbackFn<T> = () => {
             console.error('No callback for GET response');
         }
     ) {
-        this.load('GET', endpoint, callback, options);
+        await this.load('GET', endpoint, callback, options);
     }
 
     protected errorHandler(res: Response): Response {
@@ -39,8 +39,8 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    protected load<T>(method: string, endpoint: EndpointType, callback: callbackFn<T>, options = {}) {
-        fetch(this.makeUrl({ options, endpoint }), { method })
+    protected async load<T>(method: string, endpoint: EndpointType, callback: callbackFn<T>, options = {}) {
+        await fetch(this.makeUrl({ options, endpoint }), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
             .then((data: T) => callback(data))

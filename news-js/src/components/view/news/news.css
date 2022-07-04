@@ -121,6 +121,20 @@
     left: 0%;
 }
 
+.load-more {
+    margin: 0 auto;
+    display: block;
+    border-color: #3fcc59;
+    color: #69db7e;
+    box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
+    padding: 1em 2em;
+    background: transparent;
+    transition: .3s;
+    cursor: pointer;
+}
+.load-more:hover {
+    transform: translateY(-0.25em);
+}
 @media (min-width: 640px) {
     .news__item {
         flex-direction: row;

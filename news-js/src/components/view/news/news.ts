@@ -2,9 +2,9 @@ import { NewsEverything } from '../../types';
 import './news.css';
 
 class News {
-    public draw(data: Readonly<NewsEverything>[]) {
-        const news: Readonly<NewsEverything>[] =
-            data.length >= 10 ? data.filter((_item: NewsEverything, idx: number) => idx < 10) : data;
+    public draw(data: Readonly<NewsEverything>[], addMode = false) {
+        const news: Readonly<NewsEverything>[] = data;
+
         const fragment: DocumentFragment = document.createDocumentFragment();
         const newsItemTemp: HTMLTemplateElement | null = document.querySelector('#newsItemTemp');
 
@@ -57,8 +57,17 @@ class News {
             fragment.append(newsClone);
         });
 
-        newsEl.innerHTML = '';
-        newsEl.appendChild(fragment);
+        if (!addMode) {
+            newsEl.innerHTML = '';
+        }
+        let moreBtn: HTMLElement | null = document.querySelector('.load-more');
+        if (!moreBtn) {
+            moreBtn = document.createElement('button');
+            moreBtn.innerText = 'Load More';
+            moreBtn.classList.add('load-more');
+            newsEl.appendChild(moreBtn);
+        }
+        moreBtn.before(fragment);
     }
 }
 

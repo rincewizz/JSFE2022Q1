@@ -11,9 +11,9 @@ export class AppView {
         this.sources = new Sources();
     }
 
-    public drawNews(data: ResponseNewsEverything) {
+    public drawNews(data: ResponseNewsEverything, addMode = false) {
         const values: NewsEverything[] | [] = data?.articles ? data?.articles : [];
-        this.news.draw(values);
+        this.news.draw(values, addMode);
     }
 
     public drawSources(data: ResponseNewsSources) {
