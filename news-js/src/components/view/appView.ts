@@ -11,9 +11,16 @@ export class AppView {
         this.sources = new Sources();
     }
 
-    public drawNews(data: ResponseNewsEverything, addMode = false) {
+    public drawNews(data: ResponseNewsEverything, addMode = false, currentPage?: number) {
         const values: NewsEverything[] | [] = data?.articles ? data?.articles : [];
-        this.news.draw(values, addMode);
+
+        let lastPage = false;
+        if (currentPage) {
+            const totalResults: number = data.totalResults;
+            const resultsLimit: number = totalResults < 100 ? totalResults : 100;
+            lastPage = values.length * currentPage > resultsLimit - values.length;
+        }
+        this.news.draw(values, addMode, lastPage);
     }
 
     public drawSources(data: ResponseNewsSources) {

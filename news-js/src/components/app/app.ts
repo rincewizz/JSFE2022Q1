@@ -37,10 +37,14 @@ class App {
             if (target && target.classList.contains('load-more')) {
                 this.controller.page++;
                 target.setAttribute('data-source-id', this.sourceId);
-                await this.controller.getNews(e, (data: ResponseNewsEverything) => this.view.drawNews(data, true), {
-                    pageSize: '10',
-                    page: String(this.controller.page),
-                });
+                await this.controller.getNews(
+                    e,
+                    (data: ResponseNewsEverything) => this.view.drawNews(data, true, this.controller.page),
+                    {
+                        pageSize: '10',
+                        page: String(this.controller.page),
+                    }
+                );
             }
         });
 

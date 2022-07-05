@@ -24,7 +24,7 @@ type status = 'ok' | error;
 
 export interface ResponseNewsEverything {
     status: status;
-    totalResults?: number;
+    totalResults: number;
     articles?: NewsEverything[];
 }
 

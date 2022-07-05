@@ -2,7 +2,7 @@ import { NewsEverything } from '../../types';
 import './news.css';
 
 class News {
-    public draw(data: Readonly<NewsEverything>[], addMode = false) {
+    public draw(data: Readonly<NewsEverything>[], addMode = false, lastPage?: boolean) {
         const news: Readonly<NewsEverything>[] = data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();
@@ -68,6 +68,10 @@ class News {
             newsEl.appendChild(moreBtn);
         }
         moreBtn.before(fragment);
+
+        if (lastPage) {
+            moreBtn.remove();
+        }
     }
 }
 
